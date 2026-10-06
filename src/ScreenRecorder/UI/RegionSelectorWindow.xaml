@@ -1,0 +1,75 @@
+<Window x:Class="ScreenRecorder.UI.RegionSelectorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent"
+        Topmost="True" ShowInTaskbar="False" ResizeMode="NoResize"
+        Focusable="True">
+    <Window.Resources>
+        <Style x:Key="ConfirmButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="26,10,26,10" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" CornerRadius="8" Padding="{TemplateBinding Padding}"
+                                Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.88" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.75" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="CancelButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Padding" Value="26,10,26,10" />
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" CornerRadius="8" Padding="{TemplateBinding Padding}"
+                                Background="#CC1E1E1E"
+                                BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
+                                BorderThickness="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#E62E2E2E" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.75" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Canvas x:Name="Root" Background="Transparent" Focusable="True"
+                MouseLeftButtonDown="OnMouseDown" MouseMove="OnMouseMove"
+                MouseLeftButtonUp="OnMouseUp" />
+        <TextBlock Text="Drag to select a region · Enter to confirm · Esc to cancel"
+                   Foreground="White" FontSize="14" HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Margin="0,24,0,0" IsHitTestVisible="False" />
+        <StackPanel x:Name="Buttons" Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom" Margin="0,0,0,24" Visibility="Collapsed">
+            <Button x:Name="ConfirmButton" Content="✓ Confirm" Click="OnConfirmClick"
+                    Style="{StaticResource ConfirmButton}" Margin="0,0,12,0" />
+            <Button Content="✕ Cancel" Click="OnCancelClick"
+                    Style="{StaticResource CancelButton}" />
+        </StackPanel>
+    </Grid>
+</Window>

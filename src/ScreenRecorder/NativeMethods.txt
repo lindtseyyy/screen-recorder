@@ -1,0 +1,9 @@
+EnumDisplayMonitors
+GetMonitorInfo
+GetDpiForMonitor
+SetWindowDisplayAffinity
+SetThreadExecutionState
+MONITORINFOEXW
+MONITOR_DPI_TYPE
+WINDOW_DISPLAY_AFFINITY
+EXECUTION_STATE

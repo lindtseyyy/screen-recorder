@@ -1,0 +1,28 @@
+## .NET build output
+bin/
+obj/
+TestResults/
+*.binlog
+
+## Published builds (the single-file exe is ~170 MB; share it as a release, not in git)
+publish/
+
+## IDE / editor state
+.vs/
+.idea/
+*.user
+*.suo
+*.DotSettings.user
+
+## Recordings and scratch output
+*.mp4
+*.mp4.part
+*.log
+
+## Stray files not used by the app
+assets/*.winmd
+*.stackdump
+
+## OS
+Thumbs.db
+Desktop.ini
